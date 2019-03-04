@@ -1,11 +1,7 @@
 from flask import Flask,render_template, redirect, url_for,request, jsonify, abort,request
 from flask_sqlalchemy import SQLAlchemy
-from form import StudentForm
-
-application = Flask(__name__)
-application.config['SECRET_KEY'] = 'secret'
-application.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
-db = SQLAlchemy(application)
+from src.flaskbasic import *
+from src.flaskbasic.form import StudentForm
 
 class Student(db.Model):
   id = db.Column(db.Integer, primary_key=True)
@@ -59,5 +55,4 @@ def delete_student(indexId):
 
   return jsonify({'message':'Student found and Deleted'})
 
-if __name__ == '__main__':
- application.run(debug=True)
+

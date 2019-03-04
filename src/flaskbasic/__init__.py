@@ -1,5 +1,15 @@
 # -*- coding: utf-8 -*-
 from pkg_resources import get_distribution, DistributionNotFound
+import os
+from flask import Flask
+from flask_sqlalchemy import SQLAlchemy
+
+application = Flask(__name__)
+application.config['SECRET_KEY'] = 'secret'
+application.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
+db = SQLAlchemy(application)
+
+from src.flaskbasic import wsgi
 
 try:
     # Change here if project is renamed and does not equal the package name
@@ -9,3 +19,5 @@ except DistributionNotFound:
     __version__ = 'unknown'
 finally:
     del get_distribution, DistributionNotFound
+
+
