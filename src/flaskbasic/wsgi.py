@@ -22,7 +22,7 @@ def add_results():
       return render_template('home.html', form=form)
 
 @application.route('/results', methods=['GET','POST'])
-def results():
+def get_results():
   data = Student.query.all()
   return render_template('results.html', data = data)
 
