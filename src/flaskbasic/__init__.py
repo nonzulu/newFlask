@@ -9,7 +9,7 @@ application.config['SECRET_KEY'] = 'secret'
 application.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
 db = SQLAlchemy(application)
 
-from src.flaskbasic import wsgi
+from src.flaskbasic.wsgi import *
 
 try:
     # Change here if project is renamed and does not equal the package name
