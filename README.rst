@@ -1,4 +1,4 @@
-# **Clone repository**
+#  **Clone repository**
 git clone https://github.com/DarrenMun/newflask
 
 Foobar is a Python library for dealing with word pluralization.
@@ -7,10 +7,10 @@ Foobar is a Python library for dealing with word pluralization.
 
 Install pipenv 
 
-#Using Pipenv shell
+# Using Pipenv shell
 pipenv shell
 
-##Run Application
+## Run Application
 python application.py
 
 
