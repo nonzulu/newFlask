@@ -1,19 +1,19 @@
-==========
-flaskbasic
-==========
+#Clone repository
+git clone https://github.com/DarrenMun/newflask
+
+Foobar is a Python library for dealing with word pluralization.
+
+## Installation
+
+Install pipenv 
+
+#Using Pipenv shell
+pipenv shell
+
+## Run Application
+python application.py
 
 
-Add a short description here!
+Please make sure to update tests as appropriate.
 
-
-Description
-===========
-
-A longer description of your project goes here...
-
-
-Note
-====
-
-This project has been set up using PyScaffold 3.1. For details and usage
-information on PyScaffold see https://pyscaffold.org/.
+## License
