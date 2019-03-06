@@ -1,40 +1,73 @@
-# Clone repository #
+=============
+Flaskbasic
+=============
 
-git clone https://github.com/DarrenMun/newflask
+Flaskbasic python-flask App
+
+Description
+===========
+flaskbasic is create by the Dev team at kineticskunk, flaskbasic is built using python, flask and sqlite to store data, flaskbasic stores student captures student results and stores it in a database. 
+the aim is to keep records of every students results and be able to view them anywhere any time.  
+
+
+
+Note
+====
+
+This project has been set up using PyScaffold 3.1. For details and usage
+information on PyScaffold see https://pyscaffold.org/.
+
+
+
+
+
 
 Foobar is a Python library for dealing with word pluralization.
 
-##Installation
+Installation
+=============
+*python*
+   $ https://www.python.org/downloads/
+*pip*  
+  $ python get-pip.py.
+*pyscaffold*
+  $ pip install --upgrade pyscaffold
 
-Install pipenv 
 
-#Using Pipenv shell
-pipenv shell
+How to install flaskbasic on PC
+===========================
+*Clone repository* 
+  $ git clone https://github.com/DarrenMun/newflask
+  $ git ckeckout new-branch-name
+  $ git fetch
+  $ git pull
 
-## Run Application
+*Get into pip environment*
+  $ pipenv install
+*Using Pipenv shell*
+  $ pipenv shell
+
+
+Run application local on your PC
+================================
 python application.py
 
-# Deploying to MiniShift 
+Deploying to MiniShift  
+======================
+*First install Minishift*
 
-Minishift is a tool that allows openshift to run locally inside a VM.
-Provisions VMs to be able to run clusters within the VM.
-OpenShift orchestrates HOW and WHEN the apps run. It also enables dev teams to FIX, FINE tune and SCALE those apps as quickly as needed.
-Build and Deployment
-- Docker Image
-- Dockerfile
-- Source to Image
-- Binary Deployments
-
-
-Instructions for installation (https://github.com/minishift/minishift#welcome-to-minishift)
+  **Instructions for installation [https://github.com/minishift/minishift
+  welcome-to-minishift]
 Step 1
-    - Download the release for windows (https://github.com/minishift/minishift/releases)
+    - Download the release for windows [https://github.com/minishift/minishift/releases]
 Step 2
-    - Download VM software VirtualBox (https://www.virtualbox.org/wiki/Downloads)
+    - Download VM software VirtualBox 
+    [https://www.virtualbox.org/wiki/Downloads]
         - No need to Create a Virtual Machine/Will automatically be created
 Step 3
     - Open minishift extract file, CD to extracted file path with CMD
-        - Run to start command ($ minishift start --vm-driver virtualbox)
+        - Run to start command 
+        $ minishift start --vm-driver virtualbox
             - Will download and install the Openshift Binary 'oc' version
             - Will download minishift-centos-iso 300 - 400 mb
             - Starting OpenShift container image
@@ -56,7 +89,9 @@ Successfully installed Minishift working locally *Thumbs Up*
     - To stop Minishift command ($ minishift stop)
     - To delete your Minishift ($ minishift delete)
 
+Commands on deploying onto MINISHIFT
+====================================
 
-Please make sure to update tests as appropriate.
+$ oc new-app https://github.com/DarrenMun/newflask
+$ oc start-build newflask
 
-## License
