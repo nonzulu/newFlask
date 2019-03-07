@@ -8,8 +8,6 @@ verify_ssl = true
 [packages]
 pipenv = "*"
 gunicorn = "*"
-numpy = "==1.13.3"
-scipy = "==1.0"
 itsdangerous = "*"
 pytest = "*"
 flask-marshmallow = "*"
