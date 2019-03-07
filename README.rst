@@ -6,9 +6,7 @@ Flaskbasic python-flask App
 
 Description
 ===========
-flaskbasic is create by the Dev team at kineticskunk, flaskbasic is built using python, flask and sqlite to store data, flaskbasic stores student captures student results and stores it in a database. 
-the aim is to keep records of every students results and be able to view them anywhere any time.  
-
+Flaskbasic was created by the Dev team at Kinetic Skunk. It is built using python, flask and sqlite to store student results in a database. The aim is to keep records of every students results and be able to view them.  
 
 
 Note
@@ -16,13 +14,6 @@ Note
 
 This project has been set up using PyScaffold 3.1. For details and usage
 information on PyScaffold see https://pyscaffold.org/.
-
-
-
-
-
-
-Foobar is a Python library for dealing with word pluralization.
 
 Installation
 =============
