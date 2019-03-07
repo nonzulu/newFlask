@@ -2,7 +2,7 @@
 Flaskbasic
 =============
 
-Flaskbasic python-flask App
+Flaskbasic Python Flask App
 
 Description
 ===========
