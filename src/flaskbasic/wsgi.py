@@ -42,18 +42,38 @@ def get_results():
   _logger_getting.warning('the students results have been collected for {}'.format(data))
   return render_template('results.html', data = data)
 
-@application.route('/edit_results/<int:indexId>', methods=['GET','POST'])
-def edit_student(indexId):
+@application.route('/edit_results/<int:student_id>', methods=['GET','POST'])
+def edit_student(student_id):
   form = StudentForm()
-  data = Student.query.filter_by(id = indexId)
-  return render_template('edit_results.html', data=data)
+  data = Student.query.get_or_404(student_id)
+  return render_template('edit_results.html',data=data)
 
-@application.route('/results/<int:indexId>/update_results',methods=['GET','PUT','POST'])
-def update_results(indexId):
+@application.route('/edit_results/<int:student_id>/update_results',methods=['GET','PUT','POST'])
+def update_results(student_id):
+  student_data = Student.query.get_or_404(student_id)
   form = StudentForm()
-  data = Student.query.filter_by(id = indexId)
+  if form.validate_on_submit():
+    student_data.name = form.name.data
+    student_data.physics = form.physics.data
+    student_data.maths = form.maths.data
+    student_data.chemistry = form.chemistry.data
+    db.session.commit()
+    return redirect(url_for('edit_student', student_id=student_data.id))
+  elif request.method == 'GET':
+    form.name.data = student_data.name
+    form.physics.data = student_data.physics
+    form.maths.data = student_data.maths
+    form.chemistry.data = student_data.chemistry
+  # return render_template('edit_results.html', student_data=student_data)
   return render_template('update_page.html',form=form)
 
+@application.route("/edit_results/<int:student_id>/delete", methods=['GET'])
+def delete_post(student_id):
+    if request.method == 'GET':
+      student_results = Student.query.get_or_404(student_id)
+      db.session.delete(student_results)
+      db.session.commit()
+    return redirect(url_for('get_results'))
 
 # @application.route('/results/<int:indexId>/update_results', methods=['PUT'])
 # def update_results(indexId):

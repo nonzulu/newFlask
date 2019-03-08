@@ -5,26 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Page Title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="../static/style.css"/>
+    <link rel="stylesheet" type="text/css" media="screen" href="/static/style.css"/>
+    <!-- <script src="main.js"></script> -->
 </head>
-
-<style type="text/css">
-    table{
-        width: 80%;
-
-    } 
-    th, td {
-    border: 1px solid black;
-    text-align: center;
-  }
-
-</style>
 <body style="background-color: #95a5a6;position: absolute;top: 50%;left: 50%;width: 500px;height: 500px;margin-top: -250px;margin-left: -250px;">
         <div align="">
    <div class="container" style="margin-bottom: : -150%;">
       <form method="POST" action="">
           {{ form.hidden_tag() }}
-
           <fieldset class="">
               <h1> Student Result System </h1>
               <div class="">
@@ -84,7 +72,3 @@
           <div class="">
               {{ form.submit(class="btn btn-outline-info") }}
           </div>
-      </form>
-  </div>
-</body>
-</html>
