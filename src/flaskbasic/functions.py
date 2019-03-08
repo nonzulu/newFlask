@@ -1,30 +1,49 @@
+from flask_sqlalchemy import SQLAlchemy
+from src.flaskbasic.models import Student
+from src.flaskbasic.form import StudentForm
+from src.flaskbasic.wsgi import db
+from src.flaskbasic.wsgi import Student
 import os
 
-class Functions():
-	def get_database_connection(self):
-		import sqlite3
-		sqlite_file = 'site.db'
-		file_exists = os.path.isfile(sqlite_file)
-		conn = sqlite3.connect(sqlite_file)
-		if not file_exists:
-			create_sqlite_tables(conn)
-		return conn
+class functions():
 
-	def create_sqlite_tables(self,conn):
-		cursor = conn.cursor()
-		with open('schema.sql','r') as schema_file:
-			cursor.executescript(schema_file.read())
-		conn.commit()
+      def putData():
+            form = StudentForm()
+            student = Student(name=form.name.data, physics=form.physics.data, maths=form.maths.data,chemistry=form.chemistry.data,)
+            db.session.add(student)
+            db.session.commit()
 
-	def check_name(self,id):
-		conn = get_database_connection()
-		try:
-			cursor = conn.cursor()
-			cursor.execute('SELECT id FROM Student WHERE id=?',(id))
-			result =cursor.fetchone()
-			if result:
-				return result[0]
-		except:
-			return False
+      def readData():
+            results = Student.query.all()
+            return results
+
+      def readName(learner,student_id):
+            studentname = Student.query.filter_by(name=learner, id=student_id).all()
+            for student_name in studentname:
+                  return student_name.name
+
+
+      def readResults(student_id,learner,physcalS, mathematics, chem ):
+            studentname = Student.query.filter_by(id=student_id, name=learner, physics=physcalS, maths= mathematics, chemistry=chem     ).all()
+            for student_name in studentname:
+                  return student_name.id,student_name.name,student_name.physics,student_name.maths,student_name.chemistry
+
+      def updates(student_id):
+            student_data = Student.query.get_or_404(student_id)
+            form = StudentForm()
+      if form.validate_on_submit():
+            student_data.name = form.name.data
+            student_data.physics = form.physics.data
+            student_data.maths = form.maths.data
+            student_data.chemistry = form.chemistry.data
+            db.session.commit()
+            
+      def delete(student_id):
+            student_results = Student.query.get_or_404(student_id)
+            db.session.delete(student_results)
+            db.session.commit() 
+
+      def resetResults():
+          db.drop_all()
 			
 	

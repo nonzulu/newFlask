@@ -1,12 +1,18 @@
-import json
+from flask_sqlalchemy import SQLAlchemy
+# from flaskbasic.wsgi import *
+from src.flaskbasic.functions import functions
 import pytest
-from flaskbasic.wsgi import Functions
 
+fun = functions
 
-test_func = Functions()
+def test_student_name():
+    assert fun.readName('Lwando',6) == 'Lwando'
 
-assert test_func.check_name(1) == 1
+def test_all_results():
+    assert fun.readResults(6, 'Lwando',50,60,90) == (6, 'Lwando', 50, 60, 90)
 
+    
+    
 	
 
 		
