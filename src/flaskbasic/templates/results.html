@@ -7,7 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="../static/style.css"/>
 </head>
+<?php 
+echo "pass"
 
+
+?>
 <style type="text/css">
     table{
         width: 80%;
@@ -24,6 +28,7 @@
     <div id="results">
    <table>
    <tr>
+    <th>Edit Student</th>
     <th>Student Id</th>
     <th>Name</th>
     <th>Physics</th>
@@ -34,6 +39,7 @@
        {% for x in data %}
          <div>
         <tr>
+           <td><a href='/edit_results/{{x.id}}' style="color: #FFFFFF;">Edit {{x.name}}</a></td>
            <td>{{ x.id }}</td>
            <td>{{ x.name }}</td>
            <td>{{ x.physics }}</td> 

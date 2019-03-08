@@ -5,7 +5,7 @@ from src.flaskbasic.form import StudentForm
 import sys
 import logging
 
-logging.basicConfig(filename='app.log', filemode='w', format='%(asctime)s - %(levelname)s - %(message)s',datefmt='%d-%b-%y %H:%M:%S')
+# logging.basicConfig(filename='app.log', filemode='w', format='%(asctime)s - %(levelname)s - %(message)s',datefmt='%d-%b-%y %H:%M:%S')
 _logger_adding = logging.getLogger('Adding results')
 _logger_getting = logging.getLogger('Get results')
 _logger_update = logging.getLogger('Update results')
@@ -42,23 +42,36 @@ def get_results():
   _logger_getting.warning('the students results have been collected for {}'.format(data))
   return render_template('results.html', data = data)
 
-@application.route('/results/<int:indexId>', methods=['PUT'])
+@application.route('/edit_results/<int:indexId>', methods=['GET','POST'])
+def edit_student(indexId):
+  form = StudentForm()
+  data = Student.query.filter_by(id = indexId)
+  return render_template('edit_results.html', data=data)
+
+@application.route('/results/<int:indexId>/update_results',methods=['GET','PUT','POST'])
 def update_results(indexId):
-  _logger_update.warning("Inside Update function")
-  student = Student.query.filter_by(id = indexId).first()
+  form = StudentForm()
+  data = Student.query.filter_by(id = indexId)
+  return render_template('update_page.html',form=form)
 
-  if not student:
-    _logger_update.warning("No Students in database")
-    return render_template('home.html',form=form)
 
-  student.name = request.json['name']
-  student.physics = request.json.get('physics', "")
-  student.maths = request.json.get('maths', "")
-  student.chemistry = request.json.get('chemistry', "")
-  _logger_update.warning("The updated results are Student Name: {}, Physics: {}, Maths: {}, Chemistry: {}".format(student.name,student.physics,student.maths,student.chemistry)) 
-  db.session.commit()
+# @application.route('/results/<int:indexId>/update_results', methods=['PUT'])
+# def update_results(indexId):
+#   _logger_update.warning("Inside Update function")
+#   student = Student.query.filter_by(id = indexId).first()
+
+#   if not student:
+#     _logger_update.warning("No Students in database")
+#     return render_template('home.html',form=form)
+
+#   student.name = request.json['name']
+#   student.physics = request.json.get('physics', "")
+#   student.maths = request.json.get('maths', "")
+#   student.chemistry = request.json.get('chemistry', "")
+#   _logger_update.warning("The updated results are Student Name: {}, Physics: {}, Maths: {}, Chemistry: {}".format(student.name,student.physics,student.maths,student.chemistry)) 
+#   db.session.commit()
   
-  return jsonify({'student':'Pass'})
+#   return jsonify({'student':'Pass'})
 
 @application.route('/results/<int:indexId>', methods=['DELETE'])
 def delete_student(indexId):
@@ -74,5 +87,8 @@ def delete_student(indexId):
   db.session.commit()
 
   return jsonify({'message':'Student found and Deleted'})
+
+
+
 
 
