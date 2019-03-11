@@ -25,6 +25,7 @@ MarkupSafe = "*"
 Flask-SQLAlchemy = "*"
 Werkzeug = "*"
 pytest-cov = "*"
+pytest-annotate = "*"
 
 [requires]
 python_version = "3.7"
