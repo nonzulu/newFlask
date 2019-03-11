@@ -2,7 +2,7 @@
 [run]
 branch = True
 source = flaskbasic
-# omit = bad_file.py
+omit = __init__.py, logger.py , skeleton.py
 
 [paths]
 source =

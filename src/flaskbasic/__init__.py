@@ -13,6 +13,7 @@ db = SQLAlchemy(application)
 
 from src.flaskbasic.wsgi import *
 
+
 try:
     # Change here if project is renamed and does not equal the package name
     dist_name = __name__
